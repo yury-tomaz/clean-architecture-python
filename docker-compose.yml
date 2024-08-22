@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=mysql://root:root@db_sql:3306/clean_database
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=db_sql
+      - DB_PORT=3306
+      - DB_NAME=${DB_NAME}
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
